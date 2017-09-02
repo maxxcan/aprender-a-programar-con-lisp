@@ -1,0 +1,2510 @@
+#+AUTHOR: Patricio Martínez Cano
+#+TITLE: Aprender a Programar con Lisp
+#+DATE: 2016-04-16 
+
+
+
+* Introducción
+
+Lo primero que me gustaría dejar claro es que aprender a programar, al igual que aprender a dibujar o a pintar o a tocar música o a muchas otras cosas no es fácil y no se consigue en unos pocos días. 
+
+Todo esto lo digo para recomendar a mi lector que no sea impaciente, se relaje o haga algo de meditación y se olvide del por qué ha empezado a programar para simplemente centrarse en el proceso de aprender a programar. Ya que este es un proceso que lleva tiempo y que la mejor manera de hacerlo es disfrutándolo poco a poco. 
+
+Esto lo comento a causa de que se ha puesto muy de moda gran cantidad de manuales que empiezan con; "Aprenda a... en x días". Y esto se debe a las condiciones de vida en las que nos encontramos en gran parte del mundo donde parece que hay que hacer de todo y además por ello lo queremos aprender de forma inmediata. Además buscamos siempre una meta inmediata, es decir, aprendemos no para aprender sino para realizar algo en concreto. No digo que esto no haya que hacerlo pero el proceso de aprendizaje debe ser algo más abierto, no es bueno intentar aprender pero con la cabeza ya puesta en un objetivo concreto, esto hace que se produzca cierto estrés si no estamos viendo aquello que, posiblemente de forma errónea, veamos que es lo que necesitamos y cierra nuestro entendimiento a conocimiento que sí es necesario. 
+
+* Por qué aprender a programar
+
+Si estás leyendo este libro esta pregunta sobra pero aún así recordaré que aprender es una tarea que tiene incontables beneficios.
+
+* Eligiendo lenguaje
+
+Elegir un lenguaje para empezar es una tarea bastante complicada. Normalmente se ponen encima de la mesa muchas cosas tales como la complejidad o no del lenguaje, su utilidad práctica, etc. 
+
+Al final después de tener en cuenta muchos lenguajes tales como python, ruby o java finalmente me he decantado por Lisp por motivos puramente docentes. Tal como he comentado anteriormente no he puesto en relevancia la posible practicidad o no del lenguaje elegido, lo que no quiere decir que con este no se puedan hacer cosas muy interesantes y aplicaciones para producción. 
+
+Finalmente he elegido Lisp como ya habrá adivinado el lector principalmente por su sencillez en la sintaxis y otras cosas que expongo más adelante. Pero por motivos de docencia es muy interesante el que sea sencillo en su sintaxis lo que hace que podemos centrarnos en enseñar aspectos de la programación e ir directamente a resolver problemas sin tener que volverse loco con los errores de sintaxis muy típicos de otros lenguajes.  
+
+* Por qué he elegido Lisp
+
+1. Sencillez de sintaxis
+2. Gran cantidad de herramientas
+3. Lenguaje multiparadigma
+4. Lenguaje fácilmente reprogramable
+5. Es el lenguaje de la Inteligencia Artificial
+
+** Sencillez de su sintaxis
+
+Lisp es un lenguaje muy interesante y recomendable por muchas razones para cualquier programador. Pero me centraré en las razones por las cuales he elegido este lenguaje para el aprendizaje de la programación.
+
+Lisp es un lenguaje con una sintaxis sumamente sencilla y elegante, esto hace que nos podamos enfocar en los asuntos de la programación sin tener que preocuparnos tanto en cometer errores sintácticos, cosa que ocurre mucho con otros lenguajes. 
+
+Su sencillez no solo es en temas de sintaxis además en lo que en otros lenguajes requieres el conocimiento de muchas tipos de datos por ejemplo, vectores, arrays, tablas, etc, los cuales se definen de manera determinada, en lisp todo esto se resuelve solo con unos pocos tipos. 
+
+** Gran cantidad de herramientas
+
+Además Lisp lleva de serie una gran cantidad de funciones primitivas para trabajar con lo que podremos centrarnos en los problemas y olvidarnos de lo demás.
+
+** Es un lenguaje multiparadigma
+
+En programación a distintas formas de abarcar un problema con lo que se llaman distintos paradigmas de programación. Así tenemos programación funcional, orientada a objetos, iterativa, etc. Lisp contempla todos esos tipos distintos y nos da herramientas para poder trabajar con ellos. Esto no ocurre tanto en otros lenguajes que se enfocaron en su creación más bien un uno o pocos tipos de paradigmas de programación, así con Lisp podremos abarcarlos todos, ya que no todos los problemas, como veremos, deben ser solucionados de la misma manera. 
+
+** Es un lenguaje fácilmente reprogramable
+
+Esto es que desde siempre Lisp da la posibilidad y facilidad en crear nuestro "propio lenguaje", con nuestras funciones y macros con lo que las posibilidades son infinitas y nuestro único límite es nuestro propio cerebro. 
+
+** Inteligencia Artificial
+
+Aunque no lo veremos tan detenidamente como quisiera, dejar claro que Lisp es el lenguaje de la IA por excelencia y podremos vislumbrar algo de esto en algún ejemplo final. 
+
+* Comenzando
+** Empezando con una libreta y un lápiz
+
+Los primeros capítulos los comenzaremos con un lapíz o bolígrafo y una libreta.
+
+Esto lo hago por varios motivos:
+
+1. Los ordenadores y la tecnología en general generan por defecto una serie de distracciones que llevan fácilmente a perder la concentración en un trabajo específico. 
+
+Con el tiempo y la necesidad de trabajar con ordenadores y otros gadgets he ideado una serie de técnicas para poder reducir lo máximo posible las distracciones usando tanto
+software como, técnicas, adiestramiento mental, etc. Para más información aconsejo leer los post que he realizado en mi blog personal al respecto pero el asunto es que la mejor forma de no sucumbir a las distracciones de de la tecnología es eliminarlas lo máximo posible. Por ello aconsejo para estudiar lo máximo posible evitar ordenadores, móviles, etc. 
+
+Por ello usaremos los elementos analógicos del lápiz y la libreta lo máximo posible. 
+
+2. Por algunas razones, las cuales no vamos a profundizar aquí, el uso del lápiz y bolígrafo y tener que escribir aquello que se está aprendiendo, se queda mejor grabado en nuestros cerebros que si utilizamos el ordenador. Esto puede ser porque al escribir a lápiz o bolígrafo ponemos en funcionamiento más áreas cerebrales que de otra manera, pero como digo no vamos a profundizar en esto en este libro aunque hay mucha biografía al respecto. El asunto es que por sus reconocidos beneficios a la hora de adquirir nuevos conocimientos, es la técnica que más utilizaremos. 
+
+** Eligiendo nuestra herramienta informática para programar
+
+Aún así como he dicho finalmente para programar necesitaremos un ordenador para realizar nuestros programas y no solo el ordenador, tener un buen software que nos permita y ayude en la realización de los mismos, así como su compilación, refactorización, búsqueda y solución de fallos, etc. A estos programas actualmente se les llama IDEs, término que viene del inglés Integrated development enviorentment, o Entorno de desarrollo integrado. 
+
+Nosotros siguiendo la máxima que la simplicidad usaremos varios aunque finalmente usaremos el mejor de todos por muchos motivos. 
+
+*** Emacs y Common Lisp
+
+   Emacs finalmente será el IDE elegido por diversos motivos, aunque el fundamental es porque qué mejor IDE que uno realizado con el lenguaje que vamos a estudiar principalmente y que además lo ejecuta internamente de forma nativa. Además de que Emacs y Lisp van de la mano otros motivos son:
+
+   + Es Software Libre
+   + Es gratuito
+   + Tiene gran cantidad de herramientas y extensiones
+   + Soporte para prácticamente todos los lenguajes conocidos y sin conocer
+   + Es configurable hasta el extremo
+   + Tiene el mejor REPL para lisp que hay
+* Introducción a Lisp
+* Funciones y datos
+
+En este capítulo veremos resumidamente algunos tipos fundamentales en Lisp. 
+
++ Datos. Es la información, como números, palabras y listas de cosas
++ Funciones. Las funciones operan en los datos para obtener *Resultados*
+
+* Sintaxis y semántica en Lisp
+
+
+Qué es la sintaxis y qué es la semántica. 
+
+Pongamos por ejemplo una frase en español. "Pablo llamó a pedrito para pedirle una favorcito" 
+
+La sintaxis son las reglas a la hora de escribir una frase para que esta sea correcta. 
+
+La semántica por otro lado es el significado de esa frase. Nosotros podemos hacer una frase sintácticamente correcta pero que no tenga ningún significado correcto o ninguno en absoluto. 
+
+Ejemplo: "Los españoles son muy españoles y mucho españoles"
+
+
+La elección de Lisp para este curso es precisamente por su simplicidad en su sintáxis ya que su semántica en cambio sí es muy compleja y podemos formular todo tipo de estructuras en cambio se hace con muy pocos elementos. Además a diferencia de otros lenguajes emplea muy pocas palabras y signos propios, por lo que nos da mucha libertad a la hora de crear nuestras propias estructuras. 
+
+Para que veáis un poco más la diferencia voy a poner tres ejemplos de un famoso "hola mundo" en java, C y Lisp
+
+
+
+En C:
+
+#+BEGIN_SRC  c 
+
+/* Hello World in C, Ansi-style */
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(void)
+{
+  puts("Hello World!");
+  return EXIT_SUCCESS;
+}
+
+#+END_SRC
+
+
+
+En Java:
+
+
+#+BEGIN_SRC java
+
+// Hello World in Java
+
+class HelloWorld {
+  static public void main( String args[] ) {
+    System.out.println( "Hello World!" );
+  }
+}
+
+#+END_SRC
+
+
+Y en Lisp:
+
+
+#+BEGIN_SRC lisp
+
+
+;;; Hello world in Common Lisp
+
+(print "Hello World")
+
+#+END_SRC 
+
+
+
+Si os pica la curiosidad en esta [[http://helloworldcollection.de/][página]] está escrito el famoso "Hello World" en todos los lenguajes de programación.
+
+
+Para resumir diremos que en Lisp todo lo que en otros lenguajes se trabaja de forma distintas como son los vectores, arrays, tablas, etc,
+en Lisp todo eso se hace con *Listas* y por lo tanto solo hay que aprenderse las funciones necesarias para manipularlas. 
+
+* Listas 
+** Las listas son el tipo de dato más versátil
+
+
+El nombre de "Lisp" es un acrónimo de *List Procesor*. Las listas son importantes porque sirven para representar cualquier cosa. 
+
+En otros lenguajes tenemos números, símbolos, cadenas, tablas, vectores (ver los apuntes de python), pero en Lisp todo eso se hace con listas y además las listas también pueden ser gráficas, frases, etc, cosas que otros lenguajes no tienen. 
+
+** Cómo luce una listas
+Las listas tienen 2 representaciones, una impresa que la que veremos y otra interna que está en la memoria de la computadora. 
+
+La forma representada por los humanos son un conjunto o no de elementos encerrados entre paréntesis. 
+
+
+(rojo verde azul)
+
+(manzana pera melón)
+
+(AADRRKK)
+
+(2 3 5 7 11)
+
+La representación interna de una lista es como una cadena de "cons cell" 
+
+
+% dibujo 
+
+
+
+Así de forma figurada podemos decir que un bloque de construcción en Lisp está formado por sus unidades básicas, *Símbolos, números y cadenas* y todo está unido por un aglutinando que son las "cons cell" 
+
+
+%dibujo
+
+** Listas anidadas
+
+Lisp es un lenguaje muy recursivo y es algo que le da mucha potencia. Como ejemplo podemos ver que tenemos listas y además listas dentro de listas, también llamadas *listas anidadas* que le dan aún más versatilidad a las listas. 
+
+Ejemplo:
+
+((cielo azul) (hierba verde) (tierra marrón)) [fn:1]
+
+** Comandos para trabajar con listas
+
+*Length*. Para medir la longitud de una lista
+
+(A B C D) --> LENGTH --> 4
+
+
+*Equal*. Para comparar dos listas
+
+** Comandos para mostrar los elementos de una lista
+
+
+1) FIRST
+
+2) SECOND
+
+3) THIRD
+
+4) REST 
+
+
+- CAR Y CDR. Lo dejaremos para un capítulo más avanzado.
+
+** Formas de crear listas I
+
+*Cons* . Puede crear listas desde 0
+
+Dibujo
+
+*List* Es la mejor opción para crear listas ya que tenemos claro que lo que nos va a crear es una lista
+
+
+Dibujo
+
+** Ejercicios
+
+** Unos predicados más
+
+1. LISTP. Para saber si algo es una lista
+
+2. ATOM
+
+3. CONSP
+
+** Resumen
+** Funciones vistas
+
+Para obtener un elemento
+
+1. FIRST
+2. SECOND
+3. THIRD
+4. FOURTH
+5. REST 
+
+Crear listas
+
+1. CONS
+2. LIST
+
+Medir la longitud
+
+1. LENGTH
+
+Predicados
+
+1. LISTP
+2. CONSP
+3. ATOM
+4. NULL
+
+* Ejemplo de funciones en números
+
+#+BEGIN_SRC ditaa :file img/a1.png :cmdline -r -s 2
+
+2 -->+--------+
+     |   +    |---> 7
+5 -->+--------+
+ 
+         ^
+         |
+
+      Función
+
+#+END_SRC
+
+Otras funciones son:
+
+1) + 
+2) -
+3) * 
+4) / 
+5) ABS
+6) SQRT
+
+y otras ...
+
+** Tipos de números
+
+Los números que Lisp recoge son: 
+
+1. Enteros 
+2. Con coma flotante 
+3. Fraccionarios
+
+#+BEGIN_SRC ditaa :file img/a2.png :cmdline -r -s 2
+
+3 -->+--------+
+     |   +    |---> 1/2
+6 -->+--------+
+
+#+END_SRC
+
+#+BEGIN_SRC ditaa :file img/a3.png :cmdline -r -s 2
+
+3  -->+--------+
+      |   +    |---> 0.5
+6.0-->+--------+
+
+
+#+END_SRC
+
+
+El orden de la entrada afecta al resultado. Por ejemplo:
+
+#+BEGIN_SRC ditaa :file img/a5.png :cmdline -r -s 2
+
+8 -->+--------+
+     |   +    |---> 4
+2 -->+--------+
+
+#+END_SRC
+
+#+BEGIN_SRC ditaa :file img/a6.png :cmdline -r -s 2
+
+2 -->+--------+
+     |   +    |---> 1/4
+8 -->+--------+
+
+#+END_SRC
+
+
+
+
+
+*** Ejercicios
+
+Rellena los siguientes esquemas
+
+  #+BEGIN_SRC ditaa :file img/a7.png :cmdline -r -s 2
+
+6 -->+--------+
+     |   +    |---> 
+7 -->+--------+
+
+#+END_SRC
+
+#+BEGIN_SRC ditaa :file img/a8.png :cmdline -r -s 2
+
+  -->+--------+
+     |   x    |---> 12
+4 -->+--------+
+
+#+END_SRC
+
+#+BEGIN_SRC ditaa :file img/a9.png :cmdline -r -s 2
+
+4 -->+--------+
+     |   +    |---> 4
+  -->+--------+
+
+#+END_SRC
+
+#+BEGIN_SRC ditaa :file img/a10.png :cmdline -r -s 2
+
+16 -->+--------+
+      |        |---> 2
+ 8 -->+--------+
+
+#+END_SRC
+
+#+BEGIN_SRC ditaa :file img/a11.png :cmdline -r -s 2
+
+      +--------+
+-3 -->| ABS    |---> 
+      +--------+
+
+#+END_SRC
+
+** Símbolos
+
+Son otro tipo de dato. Son normalmente palabras o frases o abreviaciones. Pueden contener prácticamente cualquier combinación de letras y números y otros caracteres. Por ejemplo:
+
++ X
++ BANANAS
++ COMPUTER
++ ABS 
++ R2D2
++ WINDOW-WASHER
+
+** Diferencia entre símbolos y números
+
+Para diferenciar entre estos dos elementos:
+
++ _Entero_. Secuencia de dígitos de 0 a 9 opcionalmente precedido de un + o - sin separación.
++ _Símbolo_. Cualquier secuencia de dígitos, letras y caracteres especiales.
+
+** Símbolos especiales: T y Nil
+
+Hay dos símbolos especiales que son :
+
++ T. Verdadero o "Sí"
++ Nil. Falso, vacío o "No"
+
+Son muy importantes y son la respuesta de unas *funciones especiales* llamadas *predicados*.
+
+** Predicados
+
+Como ya hemos dicho anteriormente los *predicados* son unas funciones especiales de cuestión-respuesta. La salida de un predicado es el símbolo T que significa "sí" y el símbolo Nil que significa "no". 
+
+Existen diversos predicados y los más simples son:
+
+- *Numberp*. Función que sirve para saber si un el dato de entrada es un número
+
+#+BEGIN_SRC ditaa :file img/a12.png :cmdline -r -s 2
+
+
+
+     +------------+
+2 -->|  NUMBERP   |---> T
+     +------------+
+
+#+END_SRC
+
+
+#+BEGIN_SRC ditaa :file img/a13.png :cmdline -r -s 2
+        +-----------+
+gato -->|  NUMBERP  |---> NIL
+        +-----------+
+
+#+END_SRC
+
+
+- *Symbolp.* Función que nos indica si un dato de entrada es un símbolo o no
+  
+#+BEGIN_SRC ditaa :file img/a14.png :cmdline -r -s 2
+
+
+        +-----------+
+gato -->|  SYMBOLP  |---> T        
+        +-----------+
+
+#+END_SRC
+
+** Otros predicados
+
+Otros predicados son:
+
+- ZEROP --> Si el número de entrada es *cero* o no
+- EVENP --> Si el número de entrada es un número *par* o no
+- ODDP --> Si el número de entrada es un número *impar* o no.
+
+Como hemos ido pudiendo observar la mayoría de los predicados terminan con la letra "P". Esto es una convención que se fue tomando pero y en la mayoría de los casos ocurre, pero esto no es así siempre. Hay dos ejemplos que son muy importantes y no siguen esta convención. 
+
+
+#+BEGIN_SRC ditaa :file img/a15.png :cmdline -r -s 2
+
+2 -->+--------+
+     |   <    |---> T
+3 -->+--------+
+
+#+END_SRC
+
+#+BEGIN_SRC ditaa :file img/a16.png :cmdline -r -s 2
+
+2 -->+--------+
+     |   >    |---> NIL
+3 -->+--------+
+
+#+END_SRC
+
+** El predicado EQUAL
+
+EQUAL es un predicado que comparar dos cosas y ve si son iguales o no. Además de EQUAL en Common Lisp también se incluyen otros predicados tales como EQ, EQL y EQLP, cuyos comportamientos son algo distintos pero que veremos más adelante. Para los profanos usaremos EQUAL.  
+
+
+Ejemplos:
+
+#+BEGIN_SRC ditaa :file img/a17.png :cmdline -r -s 2
+
+gato  --> +--------+
+          | EQUAL  |---> NIL
+raton --> +-------+
+
+#+END_SRC
+
+#+BEGIN_SRC ditaa :file img/a18.png :cmdline -r -s 2
+
+gato --> +--------+
+         | EQUAL  |---> NIL
+gato --> +--------+
+
+#+END_SRC
+
+#+BEGIN_SRC ditaa :file img/a19.png :cmdline -r -s 2
+
+3 -->    +--------+
+         | EQUAL  |---> NIL
+Tres --> +--------+
+
+#+END_SRC
+
+** Ejercicios
+** Poniendo funciones juntas
+
+En Common Lisp hay docenas de funciones. Esas funciones son llamadas *funciones primitivas* o primitivas. Pero nosotros podemos hacer nuestras propias funciones de distintas formas. 
+
+**** Definiendo la función ADD1
+
+
+**** Definiendo la función ADD2
+
+**** Ejercicios
+
+** El predicado NOT
+
+NOT es el predicado "opuesto". Cambia "Sí" por "No" y "No" por "Sí".
+
+Además se puede unir a otro predicado para que dé lo opuesto. Ejemplo:
+
++ No Cero --> NOT ZEROP
+
++ No igual --> NOT EQUAL 
+
+
+#+BEGIN_SRC ditaa :file img/a20.png :cmdline -r -s 2
+
+     +-----+
+T -->| NOT |---> NIL
+     +-----+
+
+#+END_SRC
+
+#+BEGIN_SRC ditaa :file img/a21.png :cmdline -r -s 2
+
+       +-----+
+NIL -->| NOT |---> T
+       +-----+
+
+#+END_SRC
+
+En Lisp cuando algo es falso es NIL por convención. 
+
+
+#+BEGIN_SRC ditaa :file img/a22.png :cmdline -r -s 2
+
+        +-----+
+FRED -->| NOT |---> NIL
+        +-----+
+
+#+END_SRC
+
+
+*** Ejercicios 
+
+*** Funciones verdaderas
+
+Una función verdadera es aquella en la cual su entrada y salida es verdadero o falso. Ejemplo:
+
+1) XOR
+
+2) NOT 
+
+*** Número de entrada en una función
+
+Algunas funciones requieren un número exacto de entradas tal como ODDP, el cual acepta exactamente una entrada, y EQUAL, el cual acepta solo dos entradas. Pero muchas funciones aceptan un número variable de entradas. Por ejemplo, las funciones matemáticas +, - , x, y /. 
+
+
+#+BEGIN_SRC ditaa :file img/a23.png :cmdline -r -s 2
+
+2 --> +-------+
+      |       |  
+3 --> |   x   | -->  30
+      |       | 
+5 --> +-------+      
+
+#+END_SRC
+
+
+#+BEGIN_SRC ditaa :file img/a24.png :cmdline -r -s 2
+
+50 --> +------+
+       |       |  
+3  --> |   -   | -->  43
+       |       | 
+4  --> +-------+      
+
+#+END_SRC
+
+#+BEGIN_SRC ditaa :file img/a25.png :cmdline -r -s 2
+
+120 --> +-----+
+        |       |  
+3  -->  |   /   | -->  8
+        |       | 
+5  -->  +-------+      
+
+#+END_SRC
+
+
+
+
+La función - y / se comportan distinto si sólo tienen una entrada. 
+
+
+#+BEGIN_SRC ditaa :file img/a26.png :cmdline -r -s 2
+
+          +---+
+4 -->     | - |  --> -4 
+          +---+
+
+#+END_SRC
+
+
+#+BEGIN_SRC ditaa :file img/a27.png :cmdline -r -s 2
+
+          +---+
+4.0 -->   | / |  --> -4 
+          +---+
+
+#+END_SRC
+
+   
+
+4.0 -> /  -> 0.25
+
+
+¿Cómo funciona esto?
+
+
+Adivinadlo
+
+
+
+**** Ejercicios de repaso
+
+
+*** Funciones cubiertas en este capítulo
+
+* Notación EVAL
+** Función Eval 
+
+La función EVAL es el corazón de lisp. Su función es la de evaluar las expresiones de Lisp y computar sus resultados. Algunos ejemplos de cómo funciona esa funcón y cómo se escribe son:
+
+
+
+#+BEGIN_SRC ditaa :file img/a28.png :cmdline -r -s 2
+
+                              +-----+
+3 ------------------------->  |  x  |   -->   
+                         -->  +-----+
+5 ------> +-------+    |                                 
+          |  +    |  ---
+6 ------> +-------+
+
+#+END_SRC
+
+Esto escrito en notación EVAL sería: 
+
+(* 3 (+ 5 6))
+
+#+BEGIN_SRC ditaa :file img/a29.png :cmdline -r -s 2
+
+       
+5 ------> +-------+      +-----+                              
+          | EQUAL |  --> | NOT |  -> 
+6 ------> +-------+      +-----+
+
+#+END_SRC
+
+Esto escrito en notación EVAL sería:
+
+(NOT ( EQUAL 5 6)) 
+
+Como vemos  la notación EVAL va a la inversa (orden inverso) que la notación de cajas que hemos ido usando hasta ahora.
+
+** Reglas de evaluación que define el comportamiento de EVAL
+
+EVAL trabaja siguiendo una serie de reglas. 
+
+1. Los números y algunos otros objetos son auto-evaluables, es decir, se evalúan así mismos. También los símbolos especiales T y Nil. Ejemplo:
+
+23 --> 23     nil --> nil
+
+T --> T 
+
+2. _Reglas para las listas_ El primer elemento de una lista especifica la llamada a una función. Los restantes elementos son argumentos no 
+evaluados de la función.
+
+Esos argumentos son evaluados de izquierda a derecha. Ejemplo:
+
+(ODDP (+ 1 6))
+
+*** Ejercicios
+
+1. Qué hace: (NOT (EQUAL 3 (ABS -3)))
+2. Escribe la expresión que suma 8 y 2 y lo divide entre 2.
+
+** Definiendo funciones
+
+A partir de aquí pasamos de la notación de cajas a la notación EVAL. 
+
+Media:
+
+#+BEGIN_SRC ditaa :file img/a30.png :cmdline -r -s 2
+
++---------------------------------------+                             
+|x -----> +------+                      |
+|         |  +   |                      |
+|y -----> +------+ -->  +-----+         |                   
+|                       |  /  | --------|---->  
+|          2.0   ---->  +-----+         |
+|                                       |
++---------------------------------------+
+#+END_SRC
+
+
+EVAL:
+
+#+BEGIN_SRC lisp
+
+(defun media (x y)
+       (/ (+ x y) 2.0))
+
+#+END_SRC
+
+*Defun* es una función especial llamado -macro función-. Esto hace que no evalúe sus argumentos. Además no tiene que tener apostrofe. (').
+
+*Defun* se usa para definir otras funciones. La primera entrada es el nombre de la función, la segunda entrada es una lista de argumentos, la entrada
+restante es el cuerpo de la función, es lo que hace la función.
+
+Una vez definida la función, ésta se puede llamar usando la evaluación notación. Ejemplo:
+
+(media 5 6)
+
+Otro ejemplo sería:
+
+(defun cuadrado (n)(+ n n)) 
+
+Cualquier símbolo excepto T o Nill se puede usar como argumento. 
+
+Nosotros hemos utilizado argumentos con nombres como x o y pero podemos usar cualquier otro para hacer más entendible nuestra función. Por ejemplo,
+imaginemos que queremos hacer una función que nos calcule el costo total de una compra. 
+
+Utilizaremos los argumentos Costo-total, Cantidad, precio y gastos. Así tendremos:
+
+#+BEGIN_SRC lisp
+
+(defun costo-total (cantidad precio gastos) 
+       (+ (* cantidad precio) gastos))  
+
+#+END_SRC
+
+
+
+*** Documentando las funciones
+
+*** Ejercicios
+
+Hacer funciones que:
+
+1. Transformación de grados Farenheit a Celsius
+2. Transformación de grados Celsius a Farenheit
+3. Calcular una rebaja en una compra de un 18%
+   1. 
+*** Evaluando variables
+
+Una variable es un lugar donde un dato es guardado. Si tomamos el ejemplo de la función *media*, lisp crea 2 variables que son la variable X e Y. Es 
+importante distinguir entre variables y símbolos. Las variable son son símbolos; las variable son nombradas por símbolos. Las funciones son nombradas
+por símbolos también. 
+
+El valor de una variable es el valor que guarda. Cuando nosotros evaluamos (media 5 6), Lisp crea las variables X e Y y les asigna los valores de 5 y 6
+respectivamente. 
+
+Fuera de la función *media* esas variables son inaccesibles.
+
+*** Evaluando Símbolos
+
+Los nombres que una función usa para sus argumentos son independientes de los que usa otra función. Por ejemplo, si usamos la función media
+y usamos el símbolo N, éste es independiente de que usemos N en otra función.
+
+Así la regla de Evaluación para lo símbolos es simple:
+
+*Un símbolo se evalúa al valor de la variable al que se refiere* 
+
+Fuera de la función Media, N se considera una *Variable Global*. 
+
+Si evaluamos N fuera de la función nos dará el siguiente error:
+
+N --> Error! N unassigned variable
+
+*** Usando Símbolos y listas como datos
+
+Supongamos que queremos usar EQUAL sobre dos símbolos por ejemplo KIRCK y PICARD. 
+
+(EQUAL KIRCK PICARD) 
+
+Esto Nos dará un error, ya que Lisp intentará evaluar esos símbolos como variables globales. 
+
+Para que esto no ocurra le ponemos un apostrofo (') y entonces serán tratados no como símbolos, sino como datos. En este caso decimos
+que entramos en el *DATAMODE*. 
+
+Cuando los símbolos son usado como datos en una función hay que ponerle el apostrofe para evitar su evaluación. Ejemplo:
+
+*Función de bienvenida*
+
+(defun bienvenida (x y)
+       (list 'Bienvenida x 'a 'mi y))
+
+¿Cómo llamamos a ésta función?
+
+(bienvenida 'Paco 'casa)
+
+Si no usamos el apostrofe en la entrada de datos también dará error. 
+
+Otros ejemplos serían:
+
+(first (nosotros somos guays))
+
+: Error! nosotros undefinied function 
+
+(first '(nosotros somos guays))
+
+(+ 1 3)        (oddp (+ 1 2))
+
+'(+ 1 3)       (oddp '(+ 1 2)) --> Error!
+
+*** Errores comunes con los apóstrofos
+
+Para los principiantes son muy comunes los errores al poner mal el apostrofo. 
+
+Ejemplos:
+
+(list 'a 'b c)
+(cons 'a (b c))
+(+10 '(-5 2))
+(list 'comprar (+ 27 34 'panes))
+('foo 'bar 'baz)
+
+*** Formas de crear listas II
+
+En el tema anterior vimos dos formas de crear listas. Tanto con el comando cons como con el comando List. Ahora añadiremos una tercera forma 
+usando el apostrofo y recordaremos las dos anteriores para así mostrar las 3 formas que hay de crear listas en Lisp. 
+
+1) (list 'foo 'bar 'baz)
+2) (cons 'foo ('baz bar))
+3) '(foo bar baz)
+
+*** Ejercicios 
+
+Cual es el resultado de:
+
++ (cons 5 (list 6 7))
++ (cons 5 '(list 6 7))
++ (list 3 'menos 9 'da (- 9 3))
++ (rest '(cons is short for construct))
+
+
+Las siguientes expresiones tienen errores. Escribe el tipo de error y cómo solucionarlo.
+
++ (third (the quick brown fox))
++ (list 2 and 2 is 4)
++ (+1 '(length (list tttt)))
++ (cons 'patrick (seymour marvin))
++ (cons 'patric (list seymour marvin))
+
+***  Otras formas de hacer mal una función 
+
+Vamos a ver un ejemplo de función:
+
+: (defun presentacion (x y (list x 'este 'es y))
+
+
+Veamos las 4 formas que hay de poder hacerlo incorrectamente.
+
+*** Más sobre las variables
+
+Un ejemplo más de cómo Lisp crea variables lo veremos con la siguiente función. 
+
+: (defun cuadruple (n) (doble (doble n)))
+
+*** Resumen 
+
+En este capítulo hemos aprendedio la notación EVAL, lo que nos permite que las expresiones sean representadas como listas. Las listas 
+son representadas como listas. Las listas son interpretadas  por la función EVAL de acuerdo a una serie de reglas. Estas reglas son:
+
++ Los *números* son auto-evaluados al igula que T y Nil. 
+
++ Cuando evaluamos una lista, el primer elemento es la llamada a una función y los siguientes elementos son sus argumentos, los elementos
+son evaluados de izquierda a derecha. 
+
+Los símbolos que aparecen en otro lugar distinto a al primer elemenot son interpretados como referencia a variables. Un símbolo evalúa al
+valor de la variable que nombra. A la variable que el símbolo referencia exactamente, depende del contexto. Las variables no asignadas darán
+un *Error*. 
+
++ Una lista o símbolo con un *apóstorfe* (') se evalúa así mismo. 
+
++ Una lista en la forma:
+
+:(defun nombre-funcion (lista de argumentos)(cuerpo de la función)
+
+define una función. 
+
+Es muy importante documentar las funciones.
+
+*** Funciones cubiertas en este capítulo
+
+1. EVAL
+2. DEFUN
+
+*** Aspectos avanzados
+
+**** Función especial QUOTE
+
+En inglés el apostrofe (') se llama *QUOTE*, y en lisp hay una función llamada *QUOTE*  que hace lo mismo. 
+
+(quote foo) = '(foo)
+
+Ejemplos:
+
+(quote (hola mundo)) --> hola mundo
+'(hola mundo) --> hola mundo
+
+**** Número de argumentos en funciones
+
+Las funciones como hemos visto tienen los argumentos que nosotros le digamos antes del cuerpo de la función. Pero esto es menos estricto
+de lo que podríamos imaginar. 
+
+Por ejemplo tenemos, las funciones *sin argumentos*, las funciones con argumentos *pre-establecidos*, Las  funciones con argumentos *opcionales* 
+y las funciones con *cualquier número* de argumentos. 
+
+Vamos a ver los distintos tipos:
+
+***** Funciones sin argumentos
+
+Ejemplo:
+
+: (defun test () (* 85 97))
+
+Si ejecutamos esta función:
+
+(: (test)  --> 8245
+
+Si escribiesemos algún argumento nos daría un error
+
+: (test 1) --> Error! Too many arguments
+
+***** Funciones con argumentos opcionales 
+
+Podemos poner argumentos que sean opcionales de la siguiente forma:
+
+: (defun foo (a b &optional c d) (list a b c d))
+
+Y para ver como funciona:
+
+: (foo 1 2 ) --> (1 2 NIL NIL)
+
+: (foo 1 2 3) --> (1 2 3 NIL)
+
+: (foo 1 2 3) --> (1 2 3 4) 
+
+
+***** Funciones con argumentos pre-establecidos
+
+Podemos crear funciones donde alguno de sus argumentos ya tenga un parámetro fijado por nosotros. 
+
+Por ejemplo:
+
+: (defun suma2 (x &optional (y 2)) (+ x y))
+
+: (suma2 5) --> 7
+
+***** Funciones con cualquier número de argumentos 
+
+La función suma de lisp realmente sería así:
+
+: (defun + (&rest numbers) ...)
+
+**** Notación Lambda
+
+La notación Lambda fue creada por _Alonzo Church_, un matemático de la Universidad de Princeton. Church quería una forma limpia y sin 
+ambiguedades para describir funciones y las operaciones que ellas realizasen. En la notación lambda una función que añade 3 aun número puede
+escribirse de la siguiente manera:
+
+$\lambda$ x. (3+x)
+
+_John McCarthy_, el creador de Lisp, fue un estudiante de Church. El adoptó la notación de Church para especificar funciones. El equivalente
+en Lisp de la función anónima  $\lambda$ .(3+x) es la lista:
+
+: (lambda (x) (+ 3 x))
+
+**** EVAL y APPLY 
+
+EVAL es una función primitiva de Lisp. 
+
+: '(+ 2 2) --> (+ 2 2)
+
+: (eval '(+ 2 2)) --> 4
+
+Nosotros no usamos explícitamente EVAL en ninguno de los programas que hemos escrito pero lo hacemos implícitamente. 
+
+APPLY es también una función primitiva en Lisp. APPLY toma una fucnión y una lista de objetos como entrada. Esto invoca a la función específicamente  y la lista de objetos como entrada. El primer argumento de APPLY suele ser el apóstrofe con la almohadilla (#'). Esta es la forma de suplir una función como entrada a otra función. Esto se explicará mejor más adelante. Ejemplos:
+
+: (apply #'+ '(2 3) --> 5
+
+: (apply #'equal '(12 7)) --> nil
+* Condicionales
+** Introducción
+
+Ahora llegamos a una parte muy importante y es la que en gran medida hace a los programas de ordenador ser algo útil e interesante, y es la capacidad de tomar decisiones. En este capítulo veremos una forma especial de tomar decisiones con unas funciones especiales llamadas *condicionales*, las cuales darán un resultado en base a uno o más expresiones predicados. (Una expresión predicado es una expresión cuyo valor es interpretado como "verdadero" o "falso"). 
+
+Así con los condicionales y la construcción de estas expresiones nosotros podremos escribir funciones que tomen complejas decisiones.
+
+** La función especial IF 
+
+La expresión IF es la más simple y común de los condicionales en la practica totalidad de los lenguajes de programación. En Lisp es una función macro o función especial por lo que sus argumentos no son evaluados automáticamente. 
+
+La función IF toma tres argumentos: una *prueba*, una *parte verdadera* y una *parte falsa*. Si la prueba es verdadera, IF devolverá el valor de la parte verdadera, si el test es falso, escapará de la parte verdadera y nos devolverá el valor de la parte falsa. Algunos ejemplos serían:
+
+: (if (oddp 1) 'odd 'even) --> odd
+
+: (if (oddp 2) 'odd 'even) --> even
+
+: (if (symbolp 'hola) (* 5 5) (+ 5 5) --> 25
+
+: (if (symbolp 1) (* 5 5 ) (+ 5 5) --> 10
+
+*** Ejercicios
+
+** El macro COND 
+
+COND es el condicional más cláslico en Lisp. La entrada consiste de un número de clausulas de test y consecuencias. La forma general de COND es
+la siguiente:
+
+(COND (prueba-1 consecuencia-1)
+      (prueba-2 consecuencia-2)
+      (prueba-3 consecuencia-e)
+              .....
+      (prueban-n consecuencia-n))
+
+Para ver mejor como funciona COND lo veremos con un ejemplo donde compararemos dos números:
+
+#+BEGIN_SRC Lisp
+
+(defun comparar (x y)
+     (cond ((equal x y) 'numeros-iguales)
+                ((< x y)  'el-primero-es-menor)
+                ((> x y) ' el-primero-es-mayor)))
+
+#+END_SRC
+
+Algunos ejemplos de esta función en acción son:
+
+(comparar 3 5) --> el-primero-es-menor
+ 
+(comparar 7 2) --> el-primero-es-mayor
+
+(comparar 4 4) --> numeros-iguales
+
+** Usando T como una prueba 
+
+Hay un truco usando la función COND que es incluir una clausula de la siguiente forma 
+
+: (T consecuencia)
+
+Al poner T, la prueba siempre es verdadero con lo que nos asegurarmos que la consecuencia es evaluada. Esto se usa para cuando se da lugar una situación la cual nosotros no hemos previsto en nuestra función. Vamos a utilizar como ejemplo la función CAPITAL-DE:
+
+#+BEGIN_SRC Lisp
+
+(defun  capital-de (x)
+       (cond ((equal x 'paris) 'Francia)
+                 ((equal x 'londres) 'Inglaterra)
+                 ((equal x 'madrid) 'España)
+                 (t 'esa-no-me-la-se)))
+     
+
+#+END_SRC
+ 
+
+El funcionamiento está claro, si nosotros le vamos diciendo las distintas ciudades en las que hemos puesto al país al que pertenecen la función nos lo dirá, en caso contrario nos dirá que no se conoce el país de esa ciudad. 
+
+: (capital-de 'londres) --> Inglaterra
+
+: (capital-de 'Roma)  --> esa-no-me-la-se
+
+
+Como vemos esto es muy parecido a la forma IF si sólo usasemos COND con una sola opción:
+
+(IF prueba parte-verdadera parte-falsa)
+
+Esto con COND sería:
+
+(COND (prueba parte-verdadera)
+             (T parte-falsa))
+
+
+Pongamos otro ejemplo para entendernos. 
+
+Vamos a crear una función donde le digamos 2 números y según le digamos que los sume o los multiplique, realice esto. 
+
+#+BEGIN_SRC lisp
+
+(defun operacion (op xy)
+      (cond ((equal op 'suma) (+ x y))
+                ((equal op 'multiplica) (* x y))
+                (t '(eso no sé hacerlo))))
+
+#+END_SRC
+
+Ahora en acción:
+
+(operacion suma 3 7 ) --> 10
+(operacion multiplica  2 4) --> 8
+(operacion resta 2 4) --> (Eso no sé hacerlo)
+
+** Las macros AND y OR
+
+Las macros AND y OR nos permiten hacer predicados más complejos. Antes de ver las reglas por las que evalúa AND y OR, echemos un vistazo a un ejemplo.
+
+#+BEGIN_SRC lisp
+
+(defun test (x y)
+      (or (> x y)
+            (zerop x)
+            (zerop y)))
+
+#+END_SRC 
+
+Al igual que COND, AND y OR son macros, lo que quiere decir que pueden aceptar cualquier número de clausulas, y ellos no evalúan sus argumentos primero.
+
+** Cómo evalúa AND y OR
+
+AND y OR tienen diferentes significados que Lisp que en nuestra lógica diaria. Así que las reglas que siguen son las siguientes:
+
++ AND, evalúa la clausulas una a la vez. Si una clausula retorna NIL, se detiene y devuelve NIL; sino sigue a la siguiente. Si todas las clausulas devuelven un resultado no-NIL, AND devolverá 
+el valor de la última clausula. Ejemplo:
+
+: (and nil t t) --> nil
+
+: (and 'jorge nil 'paco) --> paco
+
+: (and 'jorge 'paco 'juan) --> juan
+
++ OR, evalúa las clausualas una a la vez. Si una clausula devuelve un valor distinto a NIL, para y devuelve ese valor; sino va a la siguiente clausula o devolverá NIL si no hay nada más. 
+
+Ejemplos:
+
+: (or nil t t) --> t
+
+: (or 'jorge nil 'juan) --> jorge
+
+: (or 'jorge 'paco 'juan) --> jorge
+
+: (or nil 'juan 'paco) --> juan
+
+*** Ejercicios
+
+1. Que dará como resultado en las siguientes expresiones?
+
+: (and 'juan 'paco 'pedro)
+
+: (or 'juan 'paco 'pedro)
+
+: (or nil 'paco nil)
+
+: (and (equal 'abc 'abc) 'si)
+
+: (or (equal 'abc 'abc) 'si)
+
+** Construyendo predicados complejos
+
+Vamos a realizar una serie de funciones donde veamos como podemos agregar complejidad gracias a AND y OR
+
+Os acordáis de esta función?
+
+#+BEGIN_SRC lisp
+
+(defun  capital-de (x)
+       (cond ((equal x 'paris) 'Francia)
+                 ((equal x 'londres) 'Inglaterra)
+                 ((equal x 'madrid) 'España)
+                 (t 'esa-no-me-la-se)))
+
+#+END_SRC
+
+
+Pues vamos a añadirle un poco más de complejidad para añadir varias formas de introducir el nombre de la ciudad
+
+#+BEGIN_SRC lisp
+
+(defun  capital-de (x)
+       (cond (and (equal x 'París) (equal x 'paris) (equal x 'Paris) 'Francia)
+                 (and (equal x 'londres) (equal x 'Londres) (equal x 'London) ( 'Inglaterra)
+                 (and (equal x 'madrid) (equal x 'Madrid) 'España)
+                 (t 'esa-no-me-la-se)))
+
+#+END_SRC
+
+Ahora vamos a hacer una función donde compare dos números de distintas formas:
+
+#+BEGIN_SRC lisp
+
+(defun comparar (a b)
+     (cond ((equal a b) 'son-el-mismo)
+               ((and (oddp a) (oddp b)) 'ambos-son-impares)
+               ((and (not (oddp a)) (not (oddp b))) 'ambos-son-pares)
+               ((and (< a 0) (< b 0)) 'ambos-son-negativos)
+               (t 'no-son-lo-mismo)))
+
+#+END_SRC
+
+  Resultados:
+
+: (comparar 7 7) --> son-lo-mismo
+
+: (comparar 3 5) --> ambos-son-impares
+
+: (comparar -2 -3) --> ambos-son-negativos
+
+: (comparar 5 8) --> no-son-lo-mismo
+
+
+Ahora creemos una función que use la combinación de AND y OR para verificar si son del mismo signo:
+
+#+BEGIN_SRC lisp
+
+(defun mismo-signo (x y)
+     (or (and (zerop x) (zerop y))
+           (and (< x 0) (< y 0))
+           (and (> x 0) (> y 0))))
+
+
+#+END_SRC
+
+
+Esta función predicado nos devolverá T si los número son del mismo signo y NIL si son de distinto signo
+
+: (mismo-signo 0 0) --> t
+
+: (mismo-signo -3 -4) --> t
+
+: (mismo-signo -3 4) --> nil
+
+*** Ejercicios
+
+1. Escribe una función donde saca el cuadrado de un número si este es impar y positivo, lo multiplica por 2 si es impar y negativos y en los demás casos se divide entre 2. 
+
+2. Vamos a hacer una función del juego de -Piedra-Papel-Tijera-
+
+** Los condicionales son intercambiables 
+
+Las funciones que usan AND y OR puede también ser implementadas usando COND o IF, y viceversa. 
+
+Vamos a ver cómo la siguiente función podemos hacerla de otra forma:
+
+#+BEGIN_SRC lisp
+
+(defun  capital-de (x)
+       (cond ((equal x 'paris) 'Francia)
+                 ((equal x 'londres) 'Inglaterra)
+                 ((equal x 'madrid) 'España)
+                 (t 'esa-no-me-la-se)))
+
+#+END_SRC
+  
+Por ejemplo vamos a usar IF, y más concretamente *IF anidados*
+
+#+BEGIN_SRC lisp
+
+(defun capital-de-2 (x)
+    (if (equal x 'paris) 'Francia
+         (if (equal x 'londres) 'Inglaterra
+              (if (equal x 'madrid) 'España
+                   'esa-no-me-la-se))))
+ 
+#+END_SRC
+
+Y ahora vamos a escribir esta función usando AND y OR. 
+
+#+BEGIN_SRC lisp
+
+(defun capital-de-3 (x)
+    (or (and (equal x 'paris) 'Francia)
+          (and (equal x 'londres) 'Inglaterra)
+          (and (equal x 'madrid) 'España)
+           'esa-no-me-la-se))
+
+
+#+END_SRC
+
+
+La pregunta ahora sería cual es el más recomendable o si son completamente intercambiables para qué hay varios. Es un asunto de conveniencia. IF es el más fácil de usar
+para funciones simples. AND y OR son buenos para escribir predicados complejos. COND por otro lado, es muy bueno para escribir predicados con muchos test o pruebas. En
+todo caso el elegir el sistema más idóneo es algo que es parte del arte de la programación y eso se llega con la práctica y viendo mucho código.
+
+*** Ejercicios
+
+** Resumen 
+
+Los condicionales permiten a la computadoa tomar decisones que controlan el comportamiento del programa y bla bla bla
+
+** Funciones vistas en este capítulo 
+
+Condicionales IF, COND, AND, OR.
+
+* Variables
+** Introducción
+
+En este capítulo se explicará lo que son las variables, algo fundamental en un programa informático y además veremos los distintos tipos de variables que aparecen.
+
+** Variables locales y globales
+
+Inicialmente diremos que Emacs desarrolló el concepto de las variables mucho antes que la mayoría de lenguajes que existen actualmente, por lo que los conceptos de variables globlales y locales que puede que conozcamos de otros lenguajes no se adaptan totalmente al mismo concepto en Lisp. En todo caso ya que este es un libro inicial y presuponiendo que ni siquiera se conozca los conceptos de variables locales y globales explicaremos esto en Lisp y en un futuro capítulo explicaremos las diferencias relativo a las variables entre Lisp y otros lenguajes. 
+
+
+De momento veremos que las variables tienen distintos *ámbitos*, que son las regiones en las cuales podemos hacer referencia a esa variable. De momento nosotros hemos visto ya las variables que se crean cuando definimos una función y su ámbito se restringe al cuerpo de la función que hemos definido. A éstas las llamaremos *Variables locales*. Veamos el siguiente ejemplo:
+
+: (defun doble (n) (* n 2))
+
+Cuando nosotros llamamos a la función doble una nueva variable local N es creada. Dentro del cuerpo de DOBLE, N se referiere a esa variable pero fuera de él nosotros no podemos acceder a esa variable. Así N tendrá un significado distinto dentro de la función doble que fuera. Así:
+
+: (defun doble (n) (* n 2))
+
+: (doble 5) --> 10
+
+: n --> Error! N unassigned variable.
+
+Como vemos si intentamos acceder a la variable *n* fuera de la función doble ésta nos dá un error. 
+
+Si nosotros queremos poder acceder a una variable desde cualquier parte de nuestro programa y no solo desde el cuerpo de la función tendremos que crear una *varible global* 
+
+Para hacer esto usaremos la función *DEFVAR* de la siguiente manera:
+
+: (defvar *n* 5)
+
+En Lisp hay una norma de estilo que dice que a las variables locales se las encierre entre *asteriscos*. Más adelante veremos lo importante de esto. 
+
+Por cierto, también se pueden crear variables globales con *DEFPARAMETER*, pero nosotros no lo usaremos para no liarnos más y porque además DEFPARAMTER asigna siempre un valor a una variable aunque ésta ya tengo un valor anterior, en cambio DEFVAR no. 
+
+Además tanto con uno como con otro nos permite poner texto para ayudar a la documentación. [fn:2]
+
+#+BEGIN_SRC  lisp
+ (defvar *n* 5
+     "n es una variable global")
+#+END_SRC
+
+** Creando variables con LET
+
+Pero las *variables locales* no solo se crean al llamarlas cuando se define una función. También se pueden crear con la función especial *LET*. Por ejemplo, para calcular la media de dos números, nosotros tendriamos que creaer una variable local llamada suma (para sumar los dos números y luego dividirlos entre 2), dentro de la función de Media. 
+
+Nosotros podemos usar usar LET para crear variables locales y darles unos valores iniciales. Entonces en el cuerpo de LET nosotros podemos calcular la media.
+
+Ahora nuestra función para calcular la media quedará así:
+
+#+BEGIN_SRC lisp
+(defun media (x y)
+   (let ((sum (+ x y)))
+      (list 'la 'media 'entre x y 'y 'es (/ sum 2.0))))
+#+END_SRC
+
+: (media 5 6)
+
+: (la media entre 5 y 6 es 2.5 )
+
+
+Así vemos que la forma general de la sintaxis de LET es:
+
+(LET  ((var-1 valor-1)
+       (var-2 valor-2)
+            ....
+       (var-n valor-n))
+       cuerpo)
+
+El primer argumento de LET es una lista de pares variable-valor. Los valores son evaluados ylas variables creadas y finalmente el cuerpo de LET es evaluado usando las variables antes asignadas.
+
+Pero veamos ahora este ejemplo:
+
+#+BEGIN_SRC lisp
+(defun acompañante (x)
+  (let ((estrella (first x))
+        (co-estrella (third x)))
+    (list co-estrella 'es 'acompañada 'por estrella))
+#+END_SRC
+
+: (acompañante '(fred y ginger))
+(GINGER ES ACOMPAÑADA POR FRED)
+
+** La función especial LET* 
+
+La función especial LET* es similar a LET, excepto que en crea todas las variables locales a la vez. Esta forma de crear las variables locales es útil cuando queremos asignar nombres a varios pasos intermedios en un programa largo. 
+
+Por ejemplo, supongamos que queremos una función que calcule el cambio de porcentaje en el precio de unos productos dados los viejos y nuevos precios de los productos. Nuestra función deberá calcular la diferencia entre esos dos precios, entonces dividirlos por la diferencia entre el viejo precio y el nuevo y luego multiplicarlo por 100. Así que usaremos las variables locales Diferencia, Proporción, y Porcentaje para guardar esos valores. Nosotros usaremos LET** en vez de LET porque esas variables deben ser creadas a la vez, ya que algunas dependen de sus predecesoras. 
+
+#+BEGIN_SRC lisp
+(defun cambio-de-precio (viejo nuevo)
+   (let* ((diferencia (- new old))
+          (proporcion (/ diferencia viejo))
+          (porcentaje (* proporcion 100.0)))
+     (list 'el 'producto 'ha 'cambiado 'en 'el 'porcentaje porcentaje)))
+#+END_SRC
+
+: (cambio-de-precio 1.25 1.35)
+
+(EL PRODUCTO HA CAMBIADO EN EL PORCENTAJE)
+
+Si hacemos la misma función usando LET veremos que nos da el siguiente error:
+
+
+: the variable DIFERENCIA is unbound. 
+
+Esto es porque usamos variables en contextos anidados por lo que no podemos acceder a ellos con el LET. 
+
+Con un gráfico lo entenderemos mejor:
+
+Hacer dibujo
+
+Un error común de programación en Lisp es el uso de LET cuando LET* es requerido. Otro ejemplo sería la función siguiente:
+
+
+#+BEGIN_SRC lisp
+
+(defun rango-de-tamaño (x y z)
+  (let ((mayor (max x y z))
+        (menor (min x y z))
+        (r (/ mayor menor 1.0)))
+  (list 'factor 'de r))) 
+
+
+#+END_SRC
+
+El problema de esta expresión es que la parte de (/ BIGGEST SMALLEST) está siendo evaluado en un contenido léxico que no incluye esas variables. Además el símbolo BIGGEST es interpretado como la referencia a una variable global por ese nombre. 
+
+El problema se soluciona cambiando LET por LET* 
+
+#+BEGIN_SRC lisp
+(defun correcto-rango-de-tamaño (x y z)
+   (let* ((mayor (max x y z))
+         (menor (min x y z))
+         (r (/ mayor menor 1.0)))
+   (list 'factor 'de r)))
+
+#+END_SRC 
+
+
+Con todo esto se suele pensar que lo que se debería hacer es siempre usar LET* en vez de LET. Pero hay situaciones donde LET es la única elección correcta. Estilísticamente, además es mejor usar LET que LET* allí donde sea posible, porque esto indica a la persona que pueda estar leyendo el código de que no hay dependencias entre las variables locales que están siendo creadas. Los programas con pocas dependencias son más fáciles de entender. Todo esto lo veremos más detalladamente en futuros capítulos.
+
+** Resumen
+
+Una variable es global a una función sino es creada por esa función. Las variables locales tienen un *ámbito limitado*. Las variables locales son creadas dentro de la función o usando la función especial LET o LET* y son *locales* a los cuerpos de esas funciones. 
+
+Una variable *global* es llamadas así porque tiene un ámbito global, es decir, puede ser referenciada desde cualquier parte de nuestro programa. Para crear una variable global usaremos la función especial DEFVAR y suele ser una buena costumbre encerrar el nombre de esta variable entre asteriscos.
+
+* Estructuras de Datos en Listas
+** Introducción 
+
+En este capítulo mostraremos algunas funciones más para manejar listas y además mostraremos como las listas pueden ser implementadas para ser usadas como otras estructuras de datos como vectores, tablas y árboles. Common Lisp ofrece muchas funciones que soportan esos tipos de datos. Esto es una de las grandes ventajas de Lisp y es que un programador de Lisp puede concentrarse en el problema que quiera solventar, en cambio en otros lenguajes hay que crear esas funciones u otros métodos para trabajar con esos tipos de datos. Además en Lisp al ser todo listas el número de funciones que hay que aprenderse es menor.
+
+** Notación con paréntesis vs notación de cons cell
+** La función APPEND
+
+La función APPEND tomas dos listas como entrada y devuelve una lista que contiene todos los elementos de la primera lista seguido de todos los elementos de la segunda lista. 
+
+: (append '(frente popular) '(de judea))
+
+: (FRENTE POPULAR DE JUDEA)
+
+Si hay una lista vacía como entrada pues el resultado será la lista con elementos.
+
+: (append '(abril flores mil) nil)
+
+:(ABRIL FLORES MIL)
+
+: (append nil '(abril flores mil))
+
+:(ABRIL FLORES MIL)
+
+APPEND  también trabaja con listas anidadas. 
+
+:(append '((a 1) (b 2)) '((c 3) (d 4)))
+
+: ((A 1) (B 2) (C 3) (D 4))
+
+Aunque parezca que APPEND trata de forma igual a las dos listas de entrada la verdad es que lo hace muy distintamente. Internamente la forma de actuar de APPEND es muy curiosa pero esto lo dejaremos para verlo en futuros capítulos
+
+** Formas de crear listas III
+
+Anteriormente hemos visto que podemos crear listas con las funciones CONS, LIST y ahora hemos visto la función APPEND. Vamos a hacer un pequeño resumen de cada función y como podrían ser usados:
+
+1) CONS crea una nueva cons-cell. Se suele usar para añadir un elemento delante de una lista.
+2) LIST crea nuevas listas aceptando un arbitrario número de entradas y construyendo una cadena de cons-cell terminando en un NIL. 
+3) APPEND une listas juntas copiando la primera entrada y haciendo cdr a las últimas céldas. Es un error que la primera entrada sea una no-lista. 
+
+Ahora pongamos algunos ejemplos por comparación. Primero, considereemos el caso donde la primera entrada sea un símbolo y la segunda una lsita. 
+
+: (cons 'arroz '(y frigoles))
+: (ARROZ Y FRIGOLES)
+
+:(list 'arroz '(y frigoles))
+: (ARROZ Y FRIGOLES)
+
+: (append 'arroz '(y frigoles))
+:Error: ARROZ is not a list. 
+
+Ahora vamos a ver lo que ocurre cuando ambas entradas son listas:
+
+: (cons '(hacia el infintio) '(y más allá))
+: (HACIA EL INFINITO Y MAS ALLA)
+
+:(list '(hacia el infinito) '(y más allá))
+:((HACIA EL INFINITO)(Y MAS ALLÁ))
+
+:(append '(hacia el infinito) '(y más allá))
+: (HACIA EL INFINITO Y MÁS ALLÁ)
+
+Finalmente, veremos lo que ocurre cuando la primera entrada es una lista y la segunda un símbolo. 
+
+: (cons '(mi libro es) 'bueno)
+: ((MI LIBRO ES) . BUENO)
+
+: (list '(mi libro es) 'bueno)
+:((MI LIBRO ES) BUENO)
+
+:(append '(mi libro es) 'bueno)
+: (MI LIBRO ES .BUENO)
+
+** Más funciones sobre listas
+
+Como vemos Lisp ofrece una gran cantidad de funciones para trabajar con listas, ya dijimos la importancia de ellas en este lenguaje y si ya vimos anteriormente funciones tales como CONS, LIST, APPEND, y LENGTH. Ahora veremos REVERSE, NTH, NTHCDR, LAST y REMOVE.
+
+*** REVERSE
+
+REVERSE nos devuelve la lista al revés. 
+
+: (reverse '(uno dos tres cuatro cinco))
+: (UNO DOS TRES CUATRO CINCO)
+
+
+REVERSE da la vuelta a las listas y no trabaja con símbolos. 
+
+Además REVERSE al igual que APPEND, no es destructivo, que quiere decir que no elimina las listas de entrada sólo las copia. 
+
+: (setf pecados '(gula soberbia envidia))
+: (GULA SOBERBIA ENVIDIA)
+
+: (reverse pecados)
+: (ENVIDIA SOBERBIA GULA)
+
+: pecados
+: (GULA SOBERBIA ENVIDIA)
+
+*** NTH y NTHCDR
+
+La función  NTHCDR nos devuelve una determinada posición de un CDR de una lista. Esto con un ejemplo se ve mejor:
+
+: (nthcdr 0 '(a b c)  -> (a b c)
+
+: (nthcdr 1 '(a b c) -> (b c)
+
+: (nthcdr 2 '(a b c) -> (c)
+
+: (nthcdr 3 '(a b c) -> nil
+
+Así que como vemos primero le pasa un cdr a la lista y luego nos da los elementos a partir de la posicíón que le indicamos
+
+La función NTH obtiene el car del NTHCDR de una lista. Es decir, coge el primer elemento de una lista creada con NTHCDR. Podemos verlo mejor en este ejemplo:
+
+: (nth 0 '(a b c))  -> a
+: (nth 1 '(a b c)) -> b
+: (nth 2 '(a b c)) -> c
+: (nth 3 '(a b c)) -> nil
+
+Recuerda que en informática siempre se empieza a contar desde 0 no desde 1.
+
+*** LAST
+
+La función LAST nos devuelve el último elemento de una lista. 
+
+: (last '(rocas y pedruscos)) -> pedruscos
+: (last nill) -> nil
+: (last '(a b c . d)) -> (c . d)
+
+*** COMMENT REMOVE
+
+REMOVE borra un elemento de una lista. Normalmente borra todas las ocurrencias que uno tenga. 
+
+: (remove 'a '(b a n a n a) -> (b n n)
+
+: (remove 1 '(3 1 4 1 5 9) -> (3 4 5 9)
+
+REMOVE  al igual que  APPEND  y REVERSE son funciones no destructivas. 
+
+La siguiente tabla ayudará  recordar qué funciones son destructivas y cuales no. 
+
+| Función | Destructiva |
+|---------+-------------|
+| APPEND  | NO          |
+| REVERSE | NO          |
+| NTHCDR  | SI          |
+| NTHCD   | SI          |
+| LAST    | SI          |
+| REMOVE  | NO          |
+|---------+-------------|
+
+** Listas como vectores
+
+Un vector es una lista desordenada de elementos. Cada elemento aparece solo una vez. Algunos vectores típicos son los días de la semana, o las personas que hay en Murcia 
+Los vectores son sin lugar a dudas una de las más útiles estructuras de datos. Las operaciones básicas que se pueden realizar sobre un vector son ver si un elemento es un miembro del vector; además otras funciones que podemos hacer sobre los vectores son la *unión*, *intersección* y *diferencia* (también llamada substracción) de dos vectores; y también podemos ver si un vector es un subvector de otro. Todas estas funciones son las que vamos a ver a continuación.
+
+*** MEMBER
+
+El predicado MEMBER comprueba si un elemento es miembro de una lista. Si el elemento es encontrado en la lista, la sublista que comienza con ese elemento es devuelta. Si no es así se devolverá NIL. MEMBER nunca devuelve T, pero por tradición a esta función se le sigue llamando predicado. 
+
+: (setf patos '( huey dewey louie))
+: (HUEY DEWEY LOUIE)
+
+: (member 'huey patos)
+: (HUEY DEWEY LOUIE)
+
+: (member 'dewey patos)
+: (DEWEY LOUIE)
+
+: (member 'louie patos)
+: (LOUIE)
+
+: (member 'mickey patos)
+NIL
+
+*** INTERSECTION
+
+La función INTERSECTION toma la intersección de dos vectores y devuelve una lista con los elementos que aparecen en ambas listas. 
+
+: (intersection '(paco juan maria) '(maria pepe juan))
+: (JUAN MARIA)
+
+*** UNION
+
+La función UNION nos devuelve la unión de dos vectores, es decir, nos devuelve una lista con los elementos de ambas listas.
+
+: (union '(pie mano brazo) '(cuello cabeza oreja))
+: (PIE MANO BRAZO CUELLO CABEZA OREJA)
+
+*** SET-DIFERENCE
+
+La función SET-DIFERENCE realiza la substracción del vector. Es decir, al contrario que con intersección nos devuelve una lista con los elementos
+que no solo aparecen en cada una de las listas y omite los que aparecen en ambas. 
+
+: (set-diference '(alpha bravo charli delta) '(bravo charlie))
+: (ALPHA DELTA)
+
+A diferencia de *UNION* e *INTERSECTION*, *SET-DIFERENCE* no es una función simétrica. Esto es, que el resultado no es el mismo si cambiamos la primera entrada por la segunda y viceversa.
+
+*** SUBSETP
+
+El predicado  SUBSETP nos devolverá T si el vector está contenido en otro. 
+
+: (subsetp '(a i) '(a e i o u)) --> t
+: (subsetp '(a x) '(a e i o u)) --> nil
+
+**** Ejercicios
+
+** Programando con vectores
+
+En este apartado vamos a realizar un ejemplo de cómo resolver un modesto problema. Para solucionar este problema por un lado aprenderemos como usar vectores para solucionar algunos problemas y además aprenderemos algunas técnicas generales de programación como es dividir los problemas en problemas más pequeños para ir solucionandolos uno a uno. 
+
+Nuestro problema es el siguiente, que ponerle a un nombre el apelativo de Señor, Sr. o Señora, Sra. dependiendo del género. 
+
+Para esto como ya hemos dicho dividiremos el asunto el problemas más pequeños.
+
+Primero tendremos que ver si el nombre que nos dan de entrada tiene ya el título de Señor o Señora y para ello crearemos el siguiente predicado.
+
+#+BEGIN_SRC lisp
+(defun titulop (nombre)
+   (member (first nombre) '(Señor Señora)))
+#+END_SRC
+
+Así si por ejemplo tenemos:
+
+: (titulop '(James Bond))
+: NIL
+
+: (titulop '(Señor James Bond))
+: (Señor Señora)
+
+El siguiente paso es escribir una función que diferencia si una palabra es masculina o femenina. En este caso como es un ejemplo lo que haremos es una pequeña lista de nombres donde ya indicaremos si son masculinos o femeninos
+
+#+BEGIN_SRC lisp 
+(defvar nombres-masculinos
+         '(juan paco pepe alvaro antonio))
+
+(defvar nombres-femeninos
+         '(maria juana pepa josefa patrocinio))
+
+(defun masculinop (nombre)
+   (and (member nombre nombres-masculinos)
+        (not (member nombre nombres-femeninos))))
+
+(defun femeninop (nombre)
+   (and (member nombre nombres-femeninos)
+        (not (member nombres nombres-masculinos))))
+
+#+END_SRC
+
+: (masculinop juan)
+: T
+
+: (masculinop maria)
+: NIL
+
+Ahora crearemos la función DAR-TITULO que le añade el título de Señor o Señora al nombre. Si el nombre no es reconocido debemos decir que es Señor o Señora. 
+
+#+BEGIN_SRC lisp
+
+(defun dar-titulo (nombre)
+   "Devuelve el nombre con su apropiado título delante"
+   (cond ((titulop nombre) nombre)
+         ((masculinop (first nombre)) (cons 'Señor nombre))
+         ((femeninop (first nombre)) (cons 'Señora nombre))
+         (t  (append '(Señor o Señora) nombre))))
+
+#+END_SRC
+
+
+Lo más interesante de lo que hemos visto es entender la estrategia de solución de problemas descomponiendo éstos en problemas más pequeños.
+
+** Listas como tablas
+
+Las tablas son otra muy útil estructura que podemos crear a partir de listas. Una tabla, o *lista de asociación*, es una lista de listas. Cada lista es llamada una entrada y cada primer elemento de esa lista es una llave. Vamos a poner el ejemplo de una tabla de palabras en español y su equivalente en inglés. La tabla contiene cinco entradas y las llaves son las palabras en español. 
+
+#+BEGIN_SRC lisp
+(defvar palabras
+   '((uno one)
+     (dos two)
+     (tres three)
+     (cuatro four)
+     (cinco five)))
+#+END_SRC
+
+*** ASSOC
+
+La función ASSOC busca una entrada en una tabla y nos da la llave. Aquí unos ejemplos.
+
+: (assoc 'tres palabras) -> (tres three)
+
+: (assoc 'cuatro palabras) -> (cuatro four)
+
+: (assoc 'seis palabras) -> NIL
+
+ASSOC va a través de la tabla hasta que encuentra la palabra clave que coincide con la clave que se está buscando. Si no encuentra nada nos devolverá un NIL.
+
+*** RASSOC
+
+RASSOC es como ASSOC excepto que busca el segundo elemento de la tabla en vez de el primero. Veamos el siguiente ejemplo:
+
+#+BEGIN_SRC LISP
+(defvar sonidos
+  '(vaca . muu)
+   (cerdo . oink)
+   (gato . miau)
+   (perro . uuf)
+   (rana . daviu))
+
+#+END_SRC 
+
+  
+: (rassoc 'miau sonidos) -> (gato . miau)
+
+**** Ejercicios
+
+1. Haga un traductor de palabras del inglés al español y del español al inglés.
+
+** Programando con tablas
+
+En este ejemplo vamos a usar ASSOC con tablas para que veamos como hacer práctico el uso de las tablas junto con ASSOC. 
+
+Vamos a crear una tabla de objetos y sus características:
+
+#+BEGIN_SRC lisp
+
+((objeto1 grande verde brillante cúbico)
+ (objeto2 pequeño rojo mate plástico cúbico)
+ (objeto3 rojo pequeño opaco plástico cúbico)
+ (objeto4 pequeño opaco azúl metálico cúbico)
+ (objeto5 pequeño brillante verde esférico)
+ (objeto6 grande brillante verde esférico)
+
+#+END_SRC
+
+Ahora vamos a desarrollar una función con la que podamos ver la diferencia entre dos objetos. Primero vamos a escribir una función llamada DESCRIPCIóN  que nos describirá un objeto en cuestión. 
+
+#+begin_src lisp 
+
+(defun descripción (x)
+   (rest (assoc x cosas))
+
+
+#+end_src 
+
+
+: (descripción 'objeto3) -> (rojo pequeño opaco plástico cúbico)
+
+Ahora vamos a crear nuestra función que nos muestra las diferencias entre dos objetos gracias a las operaciones booleanas. 
+
+#+begin_src lisp
+
+(defun diferencia (x y)
+  (set-exclusive-or (descripción x)
+                    (descripción y)))
+
+#+end_src
+
+: (diferencia 'objeto2 'objeto3) -> (metálico plástico)
+
+*** Ejercicios
+
+Vamos a realizar una pequeña base de datos de los título de libros que tengamos en casa y creemos las siguientes funciones para poder hacer consultas a ella.
+
+** Resumen 
+
+Las listas son un importante tipo de dato por derecho propio, pero en Lisp ellas son aún más importantes porque su uso vale para implementar gran cantidad de tipos de datos como vectores y tablas. 
+
+Tal como hemos visto, el camino de solventar cualquier no-trivial problema de programación dividiéndolo en pequeños problemas es una de las mejores opciones. El trabajar con problemas más pequeños nos permite además testear pequeñas funciones una a una con lo que lo hace una estrategia fundamental en el proceso de la programación.
+
+** Funciones vistas en este capítulo   
+
+Lista de funciones: APPEND, REVERSER, NTH, NTHCDR, LAST, REMOVE. 
+
+Funciones sobre vectores: UNION, INTERSECTION, SET-DIFERENCE, SET-EXCLUSIVE-OR, MEMBER, SUBSETP, REMOVE-DUPLICATES.
+
+Funciones para talbas: ASSOC, RASSOC
+
+** Ejercicio. Nuestro primer videojuego
+
+Vamos a comenzar con la creación de nuestro primer videojuego. (seguimos por la 202)
+
+Veremos de una forma más divertida como el uso de tablas y otras estructuras de datos en Lisp nos permite hacer programas muy interesantes en muy poco tiempo.
+
+*** Nuestro Mundo 
+
+Para el que no lo haya vivido hubo una época donde los videojuegos en vez de tener los gráficos que tienen hoy, con gran realismo y detalle, solo tenían unos pequeños gráficos de unos pocos píxeles y mucha imaginación. Pero había una época aún más atrás donde ni siquiera existían esos gráficos y todo estaba en la imaginación del jugador siguiendo unas pautas y texto puesto por el programador del juego. 
+
+Con ese texto, se describía un mundo y se podía virtualmente moverse por él gracias a la gran imaginación de los jugadores. Era la época de los juegos conversacionales. Hay que decir que en la actualidad no han desaparecido, sólo que se han hecho multi-jugadores y se llaman juego [[https://en.wikipedia.org/wiki/MUD][MUD]] (Multi-User Dungeon)
+
+Pues bien, gracias a nuestra imaginación vamos a comenzar a realizar nuestro juego conversacional.  
+
+Para eso vamos primero a imaginarnos y representar nuestro mundo lleno de dragones y castillos. De momento empezaremos con un mundo pequeño y luego ya
+si queremos pues lo vamos yendo ampliando. 
+
+% dibujo
+
+
+Como vemos en el dibujo tenemos nuestro castillo, un castillo tipo uni-familiar con su primera planta y sus catacumbas y además fuera tenemos a un temido
+dragón que ha venido a echar una partida de ajedrez, ya que todos sabemos que los dragones son unos grandes amantes del ajedrez. 
+
+Los jugadores podrán moverse entre los distintos sitios, castillo, catacumbas y jardines del castillo. Para ir al jardín hay que pasar por el portón
+y para ir a las catacumbas hay que usar la escalera. En este gráfico lo veremos más claro. 
+
+
+% gráfico
+
+
+Además en cada sitio hay objetos con los que los jugadores podrán interactuar. Además de eso las acciones de nuestros jugadores son:
+
++ Mirar alrededor
++ Andar a los diferentes sitios
++ Coger objetos
++ Hacer cosas con los objetos cogidos
+
+De momento nosotros con nuestro nivel de conocimientos solo haremos las acciones     y además crearemos la estructura básica. Para hacer más 
+cosas nosotros necesitaremos conocer técnicas de Lisp más avanzadas con lo que las haremos en los siguientes capítulo.
+
+*** Describiendo la escena con las listas por asociación 
+
+Como ya hemos dicho nuestro mundo, por el momento contiene solo tres localizaciones. Así que primero crearemos una serie de variables, nodos.
+que contienen esas descripciones. 
+
+#+begin_src lisp 
+
+(defvar *nodos* 
+  '((sala-principal (Tú estás en la sala principal del castillo. Es un castillo pequeño pero acogedor))
+    (jardín (Tú estás en un precioso jardín. Hay un dragón con pinta de ser muy listo))
+    (catacumbas (Tú estás en las catacumbas. Hay esqueletos por todas partes pero son amigables))))
+#+end_src
+
+
+Aquí tenemos pues una variable con una lista y descripción de los lugares de nuestro mundo. En esencia, la variable nodos nos da un forma
+de encontrar los distintos sitios asociados a valores clave. En este caso los valores clave son los nombres de los lugares (sala principal, 
+jadrín y catacumbas. 
+
+Nosotros hemos creado la descripción de los sitios como un conjunto de símbolos, no como una cadena de caracteres que hubiera sido lo suyo.
+Para crear una cadena de caracteres debemos encerrar el texto entre comillas. Nosotros no lo hemos hecho así ya que la descripción no es muy 
+larga y así además ponemos en práctica nuestros conocimientos a la hora de manejar listas de símbolos. Más adelante veremos ejemplos de 
+manipulación de cadena de caracteres para este mismo juego. 
+
+Ahora nosotros vamos a crear un comando que nos describa las localizaciones. Para realizar esto usaremos la función ASSOC tal como ya hemos
+visto:
+
+: (assoc 'jardin *nodos*)
+
+(JARDÍN ( TÚ ESTAS EN UN PRECIOSO JARDÍN. HAY UN DRAGÓN CON PINTA DE SER MUY LISTO))
+
+Así con la función ASSOC podemos crear nuestra propia función describir-lugar:
+
+#+begin_src lisp
+
+(defun describir-lugar (lugares nodos)
+   (second (assoc lugares nodos)))
+
+#+end_src
+
+Para usar esta función nosotros pasamos un lugar y la lista de nodos:
+
+: (describir-lugar 'sala-principal *nodos*)
+
+(TÚ ESTÁS EN LA SALA PRINCIPAL DEL CASTILLO. ES UN CASTILLO PEQUEÑO PERO ACOGEDOR))
+
+
+Podríamos agregar la variable *nodos* directamente a nuestra función pero esto iría en contra de la forma de trabajar de la *Programación
+funcional*, ésto lo explicaremos en un capítulo dedicado a ella.
+
+*** Describiendo el camino
+
+Ahora que tenemos las descripciones de los lugares, necesitaremos la descripción de los caminos que nos llevan a esas localizaciones. Así que
+crearemos una nueva variable llamada *camino* que contiene el camino que los jugadores pueden tomar para moverse entre los distintos lugares.
+
+#+begin_src lisp
+
+(defvar *caminos* '((sala-principal (jardín este portón)
+                    (catacumbas (abajo escaleras))
+                    (jardín (sala-principal oeste portón))
+                    (catacumbas (arriba escaleras)))))
+
+#+end_src
+
+ 
+Usando esto crearemos la función describir-camino la cual nos da una descripción de los caminos que el jugador podrá elegir. 
+
+#+begin_src lisp
+
+(defun describir-camino (camino)
+    `(hay un ,(third caminos) yendo al ,(second caminos) desde aquí.))
+
+#+end_src
+
+Esta función parece muy extraña ya que en ella combinamos símbolos junto con variables. Veremos como funciona.
+
+: (describir-camino '(jardín este portón))
+
+: (HAY UN PORTÓN YENDO AL ESTE DESDE AQUÍ.)
+
+Como vemos hay datos con variables y hemos podido meclarlo todo. Esto en Lisp nos permite introducir pequeños trozos de 
+código en cadenas de datos. 
+
+Para realizarlo lo que hemos hecho es usar el apóstrofe hacia atrás [`] y no el simple apóstrofe ['], tal como hemos hecho
+en otras ocasiones para introducir datos, entramos en el llamado modo datos. Ambos símbolos [`] y ['] nos introducen en el
+modo datos en Lisp pero solo el primero nos permite volver al modo código usnado la *coma*. 
+
+% hacer dibujito para explicarlo
+
+Como vemos con pocos símbolos podemos hacer cosas complejas y esta es una de las ventajas de Lisp respecto a otros lenguajes de 
+programación.
+
+Hacemos una pausa ya que para seguir necesitamos saber algo más que veremos en el próximo capítulo.
+
+* Programación aplicativa
+
+** Introducción
+
+Existen tres estilo de programación que vamos a ver en este libro que son la programación aplicativa, la recursión y la iteración. Mucha gente prefiere ver primero la recursión pero nosotros veremos primero la programación aplicactiva ya que es más fácil de entender para los neófitos. 
+
+La *programación aplicativa* está basada en la idea de que las funciones son datos, al igual uqe los símbolos y las listas, así se puede pasar funciones como entrada a otra función y devolver funciones como valores. Los *operadores apliactivos* que vasmos a ver toman a otra función como entrada y la aplican a los elementos de una lista de varias formas. Esos operadores están construidos de una función primitiva conocida como *FUNCALL*.
+
+** FUNCALL 
+
+FUNCALL utiliza funciones con algunas entradas. Por ejemplo, nosotros podemos usar FUNCALL para llamar a la función CONS con los valores de entrada A y B. 
+
+: (funcall #'cons 'a 'b) -> (a . b)
+
+La notación #' es la forma correcta de llamar una función en Common Lisp. Realmente es una forma de acortar la palabra QUOTE que es lo que realmente  hacemos con la función es decir otra forma usar una función como entrada de otra sería con la función QUOTE:
+
+: (funcall quote(cons 'a 'b)) -> (a . b)
+
+** El operador MAPCAR 
+
+MAPCAR es el operador aplicativo más frecuentemente utilizado. Éste aplica una función dada a cada uno de los elementos de una lista, uno a la vez, y nos devuelve una lista de los resultados. Por ejemplo, pongamos que creamos una función que escribe el cuadrado de un número. Por sí misma, esta función no puede realizar el cuadrado de una lista de número porque no trabaja con listas.
+
+: (defun cuadrado (n) (* n n))
+
+: (cuadrado 3) -> 9
+
+: (cuadrado '(1 2 3 4 5) -> Error!
+
+En cambio con MAPCAR nosotros podemos aplicar el cuadrado a cada elemento de la lista individualmente. Lo haremos de esta forma:
+
+: (mapcar #'cuadrado '(1 2 3 4 5)) -> (1 4 9 16 25)
+
+** Manipulando tablas con MAPCAR 
+
+Supongamos que tenemos una variable global PALABRAS que es una tabla de de palabras en inglés y español:
+
+#+begin_src lisp
+
+(defvar palabras
+  '((uno one)
+    (dos two)
+    (tres three)
+    (cuatro four)
+    (cinco five)))
+
+#+end_src
+
+Podemos desarrollar varias formas de manipular esta tabla con MAPCAR. Por ejemplo, podemos extraer el primer componente de cada entrada de la tabla:
+
+: (mapcar #'first palabras) 
+: (UNO DOS TRES CUATRO CINCO)
+
+Por ejemplo, también podemos usar la función TRADUCIR para traducir todas las palabras del español al inglés:
+
+#+begin_src lisp
+
+(defun traducir (x)
+   (second (assoc x palabras))) 
+#+end_src
+
+: (mapcar #'traducir '(tres uno cuatro uno cinco))
+: (THREE ONE FOUR ONE FIVE)
+
+** Expresiones Lambda 
+
+Hay dos formas de introducir una función específica a un operador aplicativo. La primera forma es definir la función con DEFUN y entonces llamarla con el operador '#nombre-de-la-función. La segunda forma es pasarle la función directamente. 
+
+Esto se hace escribiendo lo que se llama una expresión Lambda. Por ejemplo, sigamos con el ejemplo de la función CUADRADO que hemos escrito antes pero la vamos a escribir como una expresión lambda:
+
+: (lambda (n) (* n n))
+
+Ahora podemos pasarla directamente a la función MAPCAR. 
+
+: (mapcar #'(lambda (n) (*n n)) '(1 2 3 4 5))
+
+: (1 4 9 16 25)
+
+Una expresión Lambda es similar a la función DEFUN, excepto que el nombre de la función es sustituido por la palabra LAMBDA. 
+
+Las expresiones Lambda son especialmente útiles para sintetizar en una sola entrada una función que necesite varias entradas. Por ejemplo, supongamos que queremos multiplicar cada elemento de una lista por 10. Nosotros podríamos estar tentados a escribir algo como:
+
+: (mapcar #'* '(1 2 3 4 5))
+
+Pero la función * necesita dos entradas, pero MAPCAR solo le ofrece una. Así que la forma correcta de solventar esta situación es con una expresión lambda. 
+
+: (mapcar #'(lambda (n) (*n 10)) '(1 2 3 4 5))
+
+: (10 20 30 40 50)
+
+*** Ejercicios
+
+1. Escribe una expresión lambda que reste 9 a un número.
+2.
+
+** El operador FIND-IF
+
+FIND-IF es otro operador aplicativo. Si le damos a FIND-IF un predicado y una lista como entrada, encontrará el primer elemento de la lista el cual haga devolver al predicado true (o cualquier valor no NIL). FIND-IF nos mostrará ese valor. 
+
+: (find-if #'oddp '(2 4 6 7 9 9)
+: 7
+
+: (find-if #'(lambda (x) (> x 3)) '(2 4 6 7 8 9))
+: 4
+
+Si no hay ningún elemento que satisfaga el predicado, FIND-IF no dará NIL como salida. 
+
+: (find-if #'oddp '(2 4 6 8)) -> nill
+
+** REMOVE-IF y REMOVE-IF-NOT
+
+*REMOVE-IF* es otro operador aplicativo que toma un predicado como entrada. REMOVE-IF borra todos los elementos de una lista que satisfagan al predicado y nos devuelve una lista de lo que queda.
+
+: (remove-if #'oddp '(1 2 3 4 5 6 7)) 
+: (2 4 6)
+
+*REMOVE-IF-NOT* es más usado que REMOVE-IF y hace exactamente lo mismo pero invirtiendo el sentido del predicado.
+
+: (remove-if-not #'oddp '(1 2 3 4 5 6 7))
+: (1 3 5 7)
+
+
+Aquí unos ejemplos algo más complejos:
+
+: (remove-if-not #'(lambda (x) (> x 3)) '(2 4 6 8 4 2 1))
+: (4 6 8 4)
+
+: (remove-if-not #'numberp '(3 manzanas 4 peras 2 bananas))
+: (3 4 2)
+
+: (remove-if-not #'symbolp '(3 manzanas 4 peras 2 bananas))
+: (MANZANAS PERAS BANANAS)
+
+Y como ejemplo final y más práctico vamos a hacer una función que cuenta ceros de una lista.
+
+#+begin_src lisp
+
+(defun contar-ceros (x)
+     (length (remove-if-not #'zerop x)))
+
+#+end_src
+
+Y si la ejecutamos pues nos cuenta los ceros de una lista de números
+
+: (contar-ceros '(24 0 0 23 0) -> 3
+
+: (contar-ceros '(1 0 0 0 1 0 1 1 1 0 0 0 1 1 1 1 1 1 0 0 0 0 0 0 0 1)) ->
+
+** El operador REDUCE
+
+REDUCE es un operador aplicativo que reduce los elementos de una lista en un único resultado. REDUCE toma una función y una lista como entrada, pero a diferencia que otros operadores que hemos visto, a REDUCE hay que darle una función que admita dos entradas. Por ejemplo, la función +. 
+
+: (reduce #'+ '(1 2 3)) -> 6
+
+: (reduce #'+ '(5) -> 5
+
+: (reduce #'+ nil) -> 0
+
+Se puede usar con otras funciones siempre que admitan dos entradas y también podemos reducir una lista de listas, por ejemplo usando APPEND. 
+
+: (reduce #'append '((uno one) (dos two) (tres three))) -> (UNO ONE DOS TWO TRES THREE)
+
+** La función especial LABELS
+
+Hasta ahora hemos estado escribiendo funciones gracias a la función especial DEFUN. Pero DEFUN tiene el problema de que nos podriamos
+encontrar con el problema de que la función creada así no pueda acceder a las variables locales. Esto se soluciona con LABELS. 
+
+La función LABELS nos permite establecer una función local dentro del cuerpo de la función principal, al igual que LET nos permite
+establecer variables locales. La sintaxis es muy parecida a la de LET:
+
+: (LABELS  (función-1 argumentos-1 cuerpo-1)
+:           ...
+:          (función-n argumentos-n cuerpo-n)
+: cuerpo)
+
+El cuerpo puede llamar a cualquier función local. Las funciones locales pueden llamarse la una a la otra y pueden referenciarse 
+a sus respectivas variables. 
+
+** Ejercio. Volvamos a nuestro juego
+
+Recordemos que nos quedamos describiendo los caminos posibles que hay en nuestro mundo para poder ir de una estancia a otra. Para eso primero creamos la función *caminos* 
+
+
+#+begin_src lisp
+
+(defvar *caminos* '((sala-principal (jardín este portón)
+                    (catacumbas (abajo escaleras))
+                    (jardín (sala-principal oeste portón))
+                    (catacumbas (arriba escaleras)))))
+
+#+end_src
+
+Posteriormente para poder describir los caminos utilizamos al función:
+
+
+ #+begin_src lisp
+
+(defun describe-camino (camino)
+    `(hay un ,(third caminos) yendo al ,(second caminos) desde aquí.))
+
+#+end_src
+
+
+Pues bien gracias a la programación aplicativa crearemos una función más avanzada usando la función anterior. Desde una localización podeos tener un número de distintos caminos que podemos tomar así que necesitamos una función que nos genere descripción de todos esos caminos. La función será la siguiente:
+
+#+begin_src lisp
+
+(defun describir-caminos (localización caminos)
+   (apply #'append (mapcar #'describe-camino (rest (assoc localización caminos)))))
+
+
+#+end_src
+
+
+Ahora vamos a probar nuestra función:
+
+: (describir-caminos 'sala-principal *caminos*)
+
+: (HAY UN PORTÓN YENDO AL OESTE DESDE AQUÍ. HAY UNA ESCALERA YENDO HACIA ABAJO DESDE AQUÍ)
+
+*** Describiendo objetos en un lugar específico
+
+Ahora además crearemos las funciones necesarias para poder visualizar los objetos que hay en nuestro mundo y con los que posteriormente podremos interactuar. Para hacer esto primero crearemos una lista de objetos:
+
+#+begin_src lisp
+(defvar *objetos* '(espada cubo ajedrez cadena rana))
+#+end_src
+
+Ahora crearemos una segunda variable que es la localización de los objetos para saber en donde está cada uno y para eso usaremos una lista de asociación. 
+
+#+begin_src lisp
+
+(defvar *localización-de-objetos* '((ajedrez sala-principal)
+                                    (cubo catacumbas)
+                                    (cadena catacumbas)
+                                    (rana jardín)))  
+
+#+end_src
+
+Ahora escribiremos una función haga un lista de los objetos que hayan en una localización:
+
+#+begin_src lisp
+
+(defun lista-objetos-aquí (localización objetos localizacion-de-objetos)
+       (labels ((at-loc-p (objeto)
+                  (eq (cadr (assoc obj obj-locs))
+                       loc)))
+       (remove-if-not #+'at-loc-p objetos)))
+
+
+#+end_src
+
+* Interactuando con el mundo
+** Introducción
+
+En este capítulo vamos a ver las formas que tiene un programa de comunicarse con el mundo. Una de las ventajas de Lisp es su modo REPL. este modo que viene del inglés (Read EVAL  PRINT y LOOP) es decir, leer, evaluar, imprimir y vuelta a empezar es una forma sencilla de entrada y salida de datos, donde los datos son leídos del teclado y el resultado es mostrado en la pantalla del ordenador. Esta modo nos da la opción de probar funciones o pequeños trozos de código para que observemos de forma inmediata cómo se comportan o si lo hacen tal como nosotros esperamos. 
+
+Pero a veces nosotros queremos hacer más, así que usando las funciones de entrada y salida que nosotros vamos a ver en este capítulo, podremos hacer que nuestro programa imprima en pantalla cualquier mensaje que querramos. Además nosotros podremos mostrar preguntas las cuales han de ser contestadas por el usuario usando el teclado. Además otro uso muy común de las funciones de entrada y salida  es la lectura de datos por parte de un archivo del disco o escribir en uno la salida de nuestro programa. Todo esto es mucho más fácil en Lisp que en otros lenguajes. 
+
+Históricamente la entrada y salida es un área donde no ha habido mucho consenso dentro de los distintos sistemas de Lisp. Incluyo hoy en día no hay una interfaz de usuario gráfica estándar, para controlar el ratón o mostrar elementos gráficos. Aún así de momento en este capítulo mostraremos las funciones más básicas las cuales sí están estandarizadas.
+
+** Cadenas de caracteres 
+
+La cadena de caracteres es un tipo de secuencia; es muy similar a una lista y podríamos decir que es un subtipo de vector, tal como veremos posteriormente, pero lo más importante tiene un conjunto de funciones primitivas para operar con ellas. 
+
+Las cadenas de caracteres, o cadenas paras simplificar, se evalúan a sí mismas, al igual que los números. Una cadena de caracteres no es un símbolo y con el predicado  STRINGP podremos comprobarlo ya que nos devolverá T si la entrada es una cadena de caracteres o no. Veamos los siguientes ejemplos:
+
+:  "las cadenas de caracteres son cosas"
+: "las cadenas de caracteres son cosas"
+
+: (setf a "Este objeto es una cadena"
+: "Este objeto es una cadena"
+
+: (stringp a)
+: T
+
+: (setf b 'este-objeto-es-un-símbolo)
+: ESTE-OBEJTO-ES-UN-SÍMBOLO)
+
+: (stringp b)
+: NIL
+
+Como se puede ver una cadena debe ser encerrada entre comillas dobles ("), que es distinto del apóstrofe (') que nosotros usamos para símbolos y listas. Tampoco vale usar dos apóstrofes, hay que usar la comilla doble.
+
+** La función FORMAT
+
+La función FORMAT nos permite escribir cadenas en la pantalla o en un archivo. El primer argumento deber ser el símbolo T cuando queremos escribir en la pantalla. (Valores diferentes son usados para escribir en un fichero en el disco.) El segundo argumento debe ser una cadena, llamada *cadena de control de format*. FORMAT entonces escribe la cadena si comillas y nos devuelve NIL.. 
+
+: (format t "Hola, mundo")
+: Hola, mundo
+: NIL
+
+La cadena que le pasamos a FORMAT puede contener directivas especiales que van precedidas de una *virgulilla* (~). Por ejemplo, la directiva ~% hace que FORMAT inserte una nueva línea. Dos ~% seguidas genera una línea en blanco en la salida. 
+
+: (format t "El tiempo vuela~%como las palomas.")
+: El tiempo vuela
+: como las palomas
+: NIL
+
+: (format t "El tiempo vuela~%~%como las palomas.")
+: El tiempo vuela
+: 
+: como las palomas
+: NIL
+
+La directiva ~& le indica a FORMAT que se mueva a una nueva línea a no ser que ya esté en una nueva línea. Eso sí, si introducimos 2 o tres sucesivos ~&, tienen el mismo efecto que uno solo. La directiva ~& es útil porque no siempre sabemos donde está el cursor. 
+
+En programas que producen varias líneas en la salida, es una buena práctica empezar cada entrada de FORMAT con un ~& para garantizarnos de que cada mensaje se vaya a escribir en una línea nueva. 
+
+#+begin_src lisp
+
+(defun tiopepe ()
+ (format t "~& "Tio pepe tiene una granja.")
+ (format t "~& "En esa granja tiene vaquitas.")
+ (format t "~& "Además de vaquitas tiene gallinas.")
+ (format t "~& "Todos felices en la granja de tio pepe".))
+
+
+#+end_src
+
+: (tiopepe)
+: Tio pepe tiene una granja.
+: En esa granja tiene vaquitas.
+: Además de vaquitas tiene gallinas.
+: Todos felices en la granja de tio pepe
+ 
+
+Otra importante directiva es ~S, la cual inserta un objeto lisp dentro del mensaje.(la S viene del inglés S-expresión o "symbolic expresión"). Para cada vez que aparece ~S, FORMAT requiere un argumento extra. En le siguiente ejemplo nosotros sustituiremso ~S que aparece tres veces con el símbolo Madrid, la lista La Coruña (ya sé que se escribe ACoruña pero para este ejemplo me viene bien la forma antigua) y el número 70. 
+
+#+begin_src lisp
+
+(format t "Desde ~S a ~S en ~S minutos!" 
+        'madrid '(la coruña) 70)
+#+end_src
+
+: Desde MADRID a (LA CORUÑA) en 70 mintuos!
+: NIL
+
+Otro ejemplo sería la función  que vamos a crear la cual llamaremos EL-CUADRADO-DE QUE toma un número y nos dice el cuadrado de ese número.
+
+#+begin_src lisp
+
+(defun el-cuadrado-de (n)
+   (format t "~&El cuadrado de ~S es ~S" n (* n n)))
+
+#+end_src
+
+: (el-cuadrado-de 10)
+: El cuadrado de 10 es 100
+: NIL 
+
+: (mapcar #'el-cuadrado-de '(1 2 3 4 5))
+: El cuadrado de 1 es 1
+: El cuadrado de 2 es 4
+: El cuadrado de 3 es 9
+: El cuadrado de 4 es 16
+: El cuadrado de 5 es 25
+: (NIL NIL NIL NIL NIL)
+
+La directiva ~A imprime un objeto sin usar caracteres de escape. Lo más fácil es explicar esto con un ejemplo:
+
+#+begin_src lisp 
+
+(defun test (x)
+   (format t "~&Con caracteres de escape: ~S" x)
+   (format t "~&Sin caracteres de escape: ~A" x)
+
+#+end_src 
+
+: (test "Hola, mundo")
+: Con caracteres de escape: "Hola, mundo"
+: Sin caracteres de escpae: Hola, mundo
+: NIL
+
+*** Ejercicios
+1. Empecemos haciendo el tablero del juego Cruz o Raya.
+
+** La función READ
+
+READ es una función que lee un objeto Lisp (un número, símbolo, lista o lo que sea) desde el teclado y devuelve ese objeto como su valor. A ese objeto no hay que ponerle el apóstrofe (') porque no será evaluado. Poniendo READ dentro de funciones podemos hacer que nuestro programa lea datos desde un teclado. Vamos a poner un ejemplo:
+
+#+begin_src lisp
+(defun mi-cuadrado ()
+  (format t "Por favor, introduzca un número: ")
+  (let ((x (read)))
+   (format t "El cuadrado del número ~S es ~S.~%"
+      x (* x x))))
+
+#+end_src
+
+
+: (mi-cuadrado)
+: Por favor, introduzca un número: 7
+: El cuadrado de 7 es 49.
+
+*** Ejercicios
+
+** La función YES-OR-NO-P 
+
+La función YES-OR-NO-P toma una cadena de entrada y le pregunta al usuario si yes o no. El usuario debe responder escribiendo "yes" en cuyo caso la función devuelve un T, o "no" y la función devolverá NIL. Esta función la usaremos como ejemplo en el programa que realizaremos como ejercicio al final del capítulo pero veremos en futuros capítulos como crearnos nuestra propia función YES-OR-NO-P traducida al español.
+
+** Leyendo archivos con WITH-OPEN-FILE
+
+Con la macro WITH-OPEN-FILE tenemos una forma fácil y conveniente de leer datos des de un archivo en el disco. Su sintaxis es la siguiente: 
+
+: (WITH-OPEN-FILE (var pathname) cuerpo)
+
+Con WITH-OPEN-FILE creamos una variable local (al igual que LET) que se transforma en un objeto directo que representa una conexión con ese archivo. Los objetos directos son un tipo especial de dato en Lisp que describe conexiones a ficheros. Si queremos ver uno, echemos un vistazo a la variable global ***TERMINAL-IO**. 
+
+: *terminal-io*
+
+: #<SYNONYM-STREAM :SYMBOL SB-SYS:*TTY* {911DC89}>
+
+Esto si usamos SBCL 
+
+En el cuerpo de WITH-OPEN-FILE podemos pasar como argumento opcional READ para leer los datos desde un fichero en vez desde el teclado. Cuando dejemos la forma WITH-OPEN-FILE, la conexión al fichero se cerrará automáticamente. 
+
+Con un ejemplo lo veremos mejor. Vamos a suponer que tenemos un fichero llamado musica.db en nuestro directorio personal */home/personal/* que contiene nuestra colección de música.
+
+: Hedningarna Tra 
+: Led Zeppelin 
+
+Nosotros podemos leer estos datos con el siguiente programa:
+
+#+begin_src lisp
+
+(defun leer-musica ()
+ (with-open-file (musica "/home/personal/musica.db")
+    (let* ((grupo (read musica))
+           (disco (read musica)))
+    (format t "~& El grupo ~S tiene los discos ~S."))))
+
+#+end_src
+
+-- Rehacer de nuevo este ejemplo ---
+
+** Escribiendo archivos con WITH-OPEN-FILE
+
+Nosotros también podemos usar WITH-OPEN-FILE para escribir en un archivo la salida de nuestro programa. Para ello usaremos la palabra clave especial :DIRECTION :OUTPUT. El objeto directo que WITH-OPEN-FILE crea puede ser usado en lugar de T como primer argumento de FORMAT. 
+
+#+begin_src lisp
+
+-- Hacer ejemplo relacionado con el anterior
+
+#+end_src
+
+** Parámetros para las directivas de FORMAT
+
+Algunas directivas de FORMAT aceptan una serie de parámetros para hacer más específico su comportamiento. Estos prefijos aparecen entre la virgulilla (~) y la directiva. Por ejemplo, la directiva ~S acepta un parámetro de anchura. Esto se utiliza para producir una salida por columnas. 
+
+#+begin_src lisp
+
+(setf geek-club
+  '((patricio martinez) (barbara pérez) (juan nadie))
+
+(defun dame-un-nombre (nombre)
+  (format t "~&~10S ~S"
+     (second nombre)
+     (first nombre)))
+
+(defun listado-de-nombres (x)
+   (mapcar #'dame-un-nombre x)
+   'done)
+
+#+end_src
+
+: (listado-de-nombres geek-club)
+
+: MARTINEZ          PATRICIO
+: PÉREZ             BARBARA
+: NADIE             JUAN
+
+** Directivas de FORMAT adicionales 
+
+Dos directivas más de FORMAT son utilizadas. 
+
++ ~D que nos da un número entero en notación decimal
++ ~F que da un número en coma flotante
+
+
+
+
+** Resumen 
+
+
+
+
+La función FORMAT toma dos argumentos o más. El primer argumento suele ser T si queremos la salida en la pantalla; el segundo debe ser una cadena de texto control. ---- Esto termínalo por tu cuenta.
+
+
+
+
+
+
+* Recursividad
+* Programación funcional
+* Programación orientada a objetos
+* Programando nuestro primer videojuego
+* Programación e investigación científica
+* Programación y docencia
+* Programación y música
+
+
+ 
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+     
+* Footnotes
+
+[fn:2] Del tema de la documentación hablaremos más extendidamente cuando veamos la Programación Literal
+
+[fn:1] cuando hagamos nuestro primer videojuego veremos la potencia de esto mejor.
