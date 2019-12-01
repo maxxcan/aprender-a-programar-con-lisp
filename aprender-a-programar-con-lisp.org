@@ -2477,8 +2477,6 @@ La función FORMAT toma dos argumentos o más. El primer argumento suele ser T s
 
 
 
-
-
 * Recursividad
 * Programación funcional
 * Programación orientada a objetos

@@ -1,0 +1,10 @@
+#+title: las-raices-de-lisp
+#+AUTHOR: Patricio Martínez Cano
+#+DATE: <2019-11-28 jue>
+
+
+* Prólogo
+Esto es una traducción del artículo de Paul Graham que está en su web.
+* Introducción 
+
+
